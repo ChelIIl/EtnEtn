@@ -7,8 +7,8 @@
       <Diagram DiagramId="51208b4ce40545f4a60ab34c336243c3" Name="Diagram1">
         <EntityTypeShape EntityType="CarSalonModel.Car" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="CarSalonModel.Contract" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarSalonModel.Person" Width="1.5" PointX="6" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="CarSalonModel.sysdiagram" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarSalonModel.Person" Width="1.5" PointX="5.625" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarSalonModel.sysdiagram" Width="1.5" PointX="3.875" PointY="6.75" IsExpanded="true" />
         <AssociationConnector Association="CarSalonModel.FK__Contract__Car__42E1EEFE" ManuallyRouted="false" />
         <AssociationConnector Association="CarSalonModel.FK__Contract__Person__41EDCAC5" ManuallyRouted="false" />
       </Diagram>

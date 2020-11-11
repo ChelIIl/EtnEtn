@@ -33,7 +33,7 @@ namespace EtnEtn
 
         public override string ToString()
         {
-            return this.FName;
+            return FName;
         }
     }
 }

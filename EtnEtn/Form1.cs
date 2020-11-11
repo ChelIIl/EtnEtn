@@ -40,5 +40,24 @@ namespace EtnEtn
             f.ShowDialog();
             this.Fill();
         }
+
+        private void btnsearch_Click(object sender, EventArgs e)
+        {
+            List<Contract> l = DBConnection.Entities.Contracts.ToList();
+            List<Contract> li = new List<Contract>();
+
+            foreach (Contract c in l)
+            {
+                if (c.Car1.Mark == mark_t.Text)
+                    li.Add(c);
+            }
+
+            this.ConTable.DataSource = li;
+        }
+
+        private void btnrefresh_Click(object sender, EventArgs e)
+        {
+            this.Fill();
+        }
     }
 }
