@@ -47,34 +47,42 @@ namespace EtnEtn
 
         private void btnsave_Click(object sender, EventArgs e)
         {
-            if(this.Contract.Id <= 0)
+            try
             {
-                this.Person.FName = this.fname_t.Text;
-                this.Person.LName = this.sname_t.Text;
-                this.Person.PName = this.pname_t.Text;
-                this.Person.EMail = this.email_t.Text;
-                this.Person.Phone = this.phone_t.Text;
-                this.Person.BirthDate = this.birth_t.Value;
-                DBConnection.Entities.People.Add(this.Person);
+                if (this.Contract.Id <= 0)
+                {
+                    this.Person.FName = this.fname_t.Text;
+                    this.Person.LName = this.sname_t.Text;
+                    this.Person.PName = this.pname_t.Text;
+                    this.Person.EMail = this.email_t.Text;
+                    this.Person.Phone = this.phone_t.Text;
+                    this.Person.BirthDate = this.birth_t.Value;
+                    DBConnection.Entities.People.Add(this.Person);
 
-                this.Car.Mark = this.mark_t.Text;
-                this.Car.Price = this.price_num.Value;
-                this.Car.Mileage = Convert.ToInt32(this.mile_t.Value);
-                this.Car.IssueYear = this.issue_date.Value;
-                this.Car.Size = this.v_t.Text;
-                this.Car.Description = this.desc_t.Text;
-                DBConnection.Entities.Cars.Add(this.Car);
+                    this.Car.Mark = this.mark_t.Text;
+                    this.Car.Price = this.price_num.Value;
+                    this.Car.Mileage = Convert.ToInt32(this.mile_t.Value);
+                    this.Car.IssueYear = this.issue_date.Value;
+                    this.Car.Size = this.v_t.Text;
+                    this.Car.Description = this.desc_t.Text;
+                    DBConnection.Entities.Cars.Add(this.Car);
 
-                this.Contract.ConDate = DateTime.Today;
-                this.Contract.Car = this.Car.IdCar;
-                this.Contract.Person = this.Person.IdPerson;
-                DBConnection.Entities.Contracts.Add(this.Contract);
+                    this.Contract.ConDate = DateTime.Today;
+                    this.Contract.Car = this.Car.IdCar;
+                    this.Contract.Person = this.Person.IdPerson;
+                    DBConnection.Entities.Contracts.Add(this.Contract);
+                }
+
+                DBConnection.Entities.SaveChanges();
+                MessageBox.Show("Данные схранены");
+
+                this.Close();
             }
 
-            DBConnection.Entities.SaveChanges();
-            MessageBox.Show("Данные схранены");
-
-            this.Close();
+            catch(Exception ex)
+            {
+                MessageBox.Show("Некорректно введены данные");
+            }
         }
 
         private void btndelete_Click(object sender, EventArgs e)
@@ -91,23 +99,31 @@ namespace EtnEtn
 
         private void btnchange_Click(object sender, EventArgs e)
         {
-            this.Contract.Person1.FName = this.fname_t.Text;
-            this.Contract.Person1.LName = this.sname_t.Text;
-            this.Contract.Person1.PName = this.pname_t.Text;
-            this.Contract.Person1.EMail = this.email_t.Text;
-            this.Contract.Person1.Phone = this.phone_t.Text;
-            this.Contract.Person1.BirthDate = this.birth_t.Value;
+            try
+            {
+                this.Contract.Person1.FName = this.fname_t.Text;
+                this.Contract.Person1.LName = this.sname_t.Text;
+                this.Contract.Person1.PName = this.pname_t.Text;
+                this.Contract.Person1.EMail = this.email_t.Text;
+                this.Contract.Person1.Phone = this.phone_t.Text;
+                this.Contract.Person1.BirthDate = this.birth_t.Value;
 
-            this.Contract.Car1.Mark = this.mark_t.Text;
-            this.Contract.Car1.Price = this.price_num.Value;
-            this.Contract.Car1.Mileage = Convert.ToInt32(this.mile_t.Value);
-            this.Contract.Car1.IssueYear = this.issue_date.Value;
-            this.Contract.Car1.Size = this.v_t.Text;
-            this.Contract.Car1.Description = this.desc_t.Text;
+                this.Contract.Car1.Mark = this.mark_t.Text;
+                this.Contract.Car1.Price = this.price_num.Value;
+                this.Contract.Car1.Mileage = Convert.ToInt32(this.mile_t.Value);
+                this.Contract.Car1.IssueYear = this.issue_date.Value;
+                this.Contract.Car1.Size = this.v_t.Text;
+                this.Contract.Car1.Description = this.desc_t.Text;
 
-            DBConnection.Entities.SaveChanges();
+                DBConnection.Entities.SaveChanges();
 
-            MessageBox.Show("Данные схранены");
+                MessageBox.Show("Данные схранены");
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show("Некорректно введены данные");
+            }
         }
     }
 }

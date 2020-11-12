@@ -14,8 +14,41 @@ namespace EtnEtn
     {
         public Form1()
         {
-            InitializeComponent();
-            this.Fill();
+            CarSalonEntities d;
+
+            try
+            {
+                InitializeComponent();
+
+                RegForm rf = new RegForm();
+                DialogResult res = rf.ShowDialog(this);
+
+                if (res == DialogResult.Cancel)
+                    throw new Exception("Войдите в учетную запись");
+
+                string log = rf.login_t.Text;
+                string pass = rf.pass_t.Text;
+
+                if (log.Length == 0 || pass.Length == 0)
+                    throw new Exception("Некорректный ввод");
+
+                System.Data.SqlClient.SqlConnectionStringBuilder c = new System.Data.SqlClient.SqlConnectionStringBuilder
+                {
+                    DataSource = "DESKTOP-5E4TI3A\\SQLEXPRESS",
+                    InitialCatalog = "CarSalon",
+                    Password = pass,
+                    UserID = pass
+                };
+
+                d = new CarSalonEntities(c.ConnectionString);
+
+                this.Fill();
+            }
+
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void Fill()
