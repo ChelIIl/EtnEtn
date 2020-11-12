@@ -40,7 +40,7 @@ namespace EtnEtn
                     UserID = pass
                 };
 
-                d = new CarSalonEntities(c.ConnectionString);
+                //d = new CarSalonEntities(c.ConnectionString);
 
                 this.Fill();
             }
